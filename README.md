@@ -1,4 +1,4 @@
 # Requisicoes-HTTP
 
-✔ Fetch API
-✔
+✔ Fetch API <br>
+✔ JSON
