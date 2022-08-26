@@ -1,1 +1,4 @@
 # Requisicoes-HTTP
+
+✔ Fetch API
+✔
