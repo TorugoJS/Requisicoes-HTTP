@@ -1,5 +1,5 @@
 # Requisicoes-HTTP
 
 ✔ Fetch API <br>
-✔ JSON
-✔ Tratando erros...
+✔ JSON <br>
+✔ Tratando erros... <br>
