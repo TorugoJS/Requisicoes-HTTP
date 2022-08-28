@@ -35,6 +35,14 @@ function App() {
       price,
     };
 
+    const res = await fetch(url, {
+      method: "POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify(product)
+    });
+
     console.log(product)
   };
 
@@ -53,26 +61,27 @@ function App() {
       
       <div className='add-dados'>
 
-        <form onSubmit={handleSubmit}>
-
+      <form onSubmit={handleSubmit}>
           <label>
             Nome:
-            <input type="text"
+            <input
+              type="text"
               value={name}
-              name={name}
-              onChange={(e) => setName(e.target.name)} />
+              name="name"
+              onChange={(e) => setName(e.target.value)}
+            />
           </label>
-
           <label>
             Preço:
-            <input type="text"
+            <input
+              type="number"
               value={price}
-              name={price}
-              onChange={(e) => setPrice(e.target.price)} />
+              name="price"
+              onChange={(e) => setPrice(e.target.value)}
+            />
           </label>
-
-          <input type="submit" value="Enviar para o json" />
-
+          <input type="submit" value="Criar" />
+        
         </form>
 
       </div>
