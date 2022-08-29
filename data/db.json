@@ -24,6 +24,16 @@
       "name": "Teste 1",
       "price": "50",
       "id": 5
+    },
+    {
+      "name": "Teste 10000",
+      "price": "100",
+      "id": 6
+    },
+    {
+      "name": "mouse",
+      "price": "50",
+      "id": 7
     }
   ]
 }
