@@ -14,7 +14,7 @@ function App() {
 
 // 4 - custom hook
 
-const {data: items, httpConfig } = useFetch(url);
+const {data: items, httpConfig, loading } = useFetch(url);
 
 
 // console.log(data)
@@ -77,11 +77,15 @@ const {data: items, httpConfig } = useFetch(url);
     <div className="App">
       <h1>Lista de produtos</h1>
 
-      <ul>
+      {/* 6 - loading */}
+
+      {loading && <p>Carregando...</p>}
+      {!loading && (<ul>
         {items && items.map((product) => (
           <li key={product.id}> {product.name} - {product.price}</li>
         ))}
-      </ul>
+      </ul>)}
+      
 
       <div className='add-dados'>
 
