@@ -108,7 +108,9 @@ const {data: items, httpConfig, loading } = useFetch(url);
               onChange={(e) => setPrice(e.target.value)}
             />
           </label>
-          <input type="submit" value="Criar" />
+          {/* 7 - state de loading no post */}
+          {!loading && <input type="submit" value="Criar" />}
+          {!loading && <input type="submit" disabled value="Aguarde" />}
 
         </form>
 
