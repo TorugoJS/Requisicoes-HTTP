@@ -13,19 +13,22 @@ export const useFetch = (url) => {
     // 6 - loading
     const [loading, setLoading] = useState(false);
 
-    const httpConfig = (data, method) => {
-        if(method === "POST"){
-        setConfig({
-            method,
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
+    // 7 - tratando erros
+    const [error, setError] = useState(null);
 
-        setMethod(method);
+    const httpConfig = (data, method) => {
+        if (method === "POST") {
+            setConfig({
+                method,
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            setMethod(method);
+        }
     }
-}
 
     useEffect(() => {
 
@@ -34,12 +37,21 @@ export const useFetch = (url) => {
             // 6 - loading
             setLoading(true)
 
+            try {
 
-            const res = await fetch(url)
+                const res = await fetch(url)
 
-            const json = await res.json()
+                const json = await res.json()
 
-            setData(json)
+                setData(json);
+
+            } catch (error) {
+
+                console.log(error.message)
+                setError("Houve algum erro")
+            }
+
+
 
             setLoading(false)
         }
@@ -47,23 +59,23 @@ export const useFetch = (url) => {
         fetchData();
     }, [url, callFetch, loading]);
 
-// 5 - retaforando post
-useEffect(() => {
+    // 5 - retaforando post
+    useEffect(() => {
 
-    const httpRequest = async () => {
-        if (method === "POST") {
-            let fetchOptions = [url, config];
+        const httpRequest = async () => {
+            if (method === "POST") {
+                let fetchOptions = [url, config];
 
-            const res = await fetch(...fetchOptions);
+                const res = await fetch(...fetchOptions);
 
-            const json = await res.json();
+                const json = await res.json();
 
-            setCallFetch(json)
+                setCallFetch(json)
+            }
         }
-    }
-    httpRequest();
+        httpRequest();
 
-}, [config, method, url])
+    }, [config, method, url])
 
-return { data, httpConfig, loading };
+    return { data, httpConfig, loading, error };
 };

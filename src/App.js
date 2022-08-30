@@ -3,7 +3,7 @@ import './App.css';
 import { useState, useEffect } from "react";
 
 // 4 - custom hook
-import {useFetch} from "./hooks/useFetch";
+import { useFetch } from "./hooks/useFetch";
 
 // API
 const url = "http://localhost:3000/products";
@@ -12,12 +12,12 @@ function App() {
 
   const [products, setProducts] = useState([]);
 
-// 4 - custom hook
+  // 4 - custom hook
 
-const {data: items, httpConfig, loading } = useFetch(url);
+  const { data: items, httpConfig, loading, error } = useFetch(url);
 
 
-// console.log(data)
+  // console.log(data)
 
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
@@ -80,12 +80,16 @@ const {data: items, httpConfig, loading } = useFetch(url);
       {/* 6 - loading */}
 
       {loading && <p>Carregando...</p>}
-      {!loading && (<ul>
-        {items && items.map((product) => (
-          <li key={product.id}> {product.name} - {product.price}</li>
-        ))}
-      </ul>)}
-      
+      {error && <p>{error}</p>}
+      {!error && (
+        <ul>
+          {items && items.map((product) => (
+            <li key={product.id}>
+              {product.name} - R$ {product.price}
+            </li>
+          ))}
+        </ul>)}
+
 
       <div className='add-dados'>
 
