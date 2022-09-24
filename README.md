@@ -1,5 +1,10 @@
 # Requisicoes-HTTP
 
-✔ Fetch API <br>
-✔ JSON <br>
-✔ Tratando erros... <br>
+## Usei:
+
+### ✔ Fetch API <br>
+### ✔ JSON <br>
+### ✔ Criação de hooks personalizados. <br>
+### ✔ Tratando erros... <br>
+
+<hr>
